@@ -129,9 +129,9 @@ function VideoDetail() {
                         controls
                         autoPlay
                         className="w-full h-full object-contain"
-                        poster={video.thumbnail}
+                        poster={video.thumbnail?.replace("http://", "https://")}
                     >
-                        <source src={video.videoFile} type="video/mp4" />
+                        <source src={video.videoFile?.replace("http://", "https://")} type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
                 </div>

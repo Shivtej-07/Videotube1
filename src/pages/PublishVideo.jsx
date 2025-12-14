@@ -102,7 +102,6 @@ function PublishVideo() {
                                 name="video"
                                 onChange={handleChange}
                                 accept="video/*"
-                                required
                                 style={{ display: 'none' }}
                                 id="video-upload"
                             />
@@ -122,7 +121,6 @@ function PublishVideo() {
                                 name="thumbnail"
                                 onChange={handleChange}
                                 accept="image/*"
-                                required
                                 style={{ display: 'none' }}
                                 id="thumb-upload"
                             />

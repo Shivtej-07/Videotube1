@@ -41,7 +41,7 @@ function VideoCard({ video }) {
         >
             <div className="relative aspect-video overflow-hidden rounded-xl bg-gray-800 mb-3">
                 <img
-                    src={video.thumbnail}
+                    src={video.thumbnail?.replace("http://", "https://")}
                     alt={video.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
