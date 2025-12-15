@@ -45,7 +45,7 @@ function Library() {
                 <Link to={link} className="text-blue-400 hover:text-blue-300 text-sm">See all</Link>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                 {items.length > 0 ? items.map(item => {
                     // Normalize data structure handling
                     const key = item._id;

@@ -41,7 +41,7 @@ function Sidebar() {
 
     if (collapsed) {
         return (
-            <aside className="fixed left-0 top-16 h-[calc(100vh-4rem)] w-16 bg-gray-900 border-r border-gray-800 overflow-y-auto py-4">
+            <aside className="fixed left-0 top-16 h-[calc(100vh-4rem)] w-16 bg-gray-900 border-r border-gray-800 overflow-y-auto py-4 hidden md:block z-40">
                 <button
                     onClick={() => setCollapsed(false)}
                     className="w-full flex justify-center py-3 hover:bg-gray-800 transition-colors"
@@ -67,7 +67,7 @@ function Sidebar() {
     }
 
     return (
-        <aside className="fixed left-0 top-16 h-[calc(100vh-4rem)] w-64 bg-gray-900 border-r border-gray-800 overflow-y-auto">
+        <aside className="fixed left-0 top-16 h-[calc(100vh-4rem)] w-64 bg-gray-900 border-r border-gray-800 overflow-y-auto hidden md:block z-40">
             {/* Collapse Button */}
             <div className="flex items-center justify-between px-4 py-3 border-b border-gray-800">
                 <span className="text-gray-300 font-medium">Menu</span>

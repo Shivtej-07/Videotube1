@@ -60,74 +60,81 @@ function PublishVideo() {
     };
 
     return (
-        <div style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
-            <h1 style={{ marginBottom: '2rem' }}>Upload Video</h1>
+        <div className="max-w-3xl mx-auto p-4 md:p-8">
+            <h1 className="text-3xl font-bold mb-8 text-white">Upload Video</h1>
 
-            {error && <div className="status error" style={{ marginBottom: '1rem', padding: '1rem' }}>{error}</div>}
+            {error && <div className="bg-red-500/10 border border-red-500 text-red-500 p-4 rounded-lg mb-6">{error}</div>}
 
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                <div className="form-section">
-                    <label style={{ display: 'block', marginBottom: '0.5rem' }}>Title</label>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+                <div className="flex flex-col gap-2">
+                    <label className="text-gray-300 font-medium">Title</label>
                     <input
                         type="text"
                         name="title"
                         value={formData.title}
                         onChange={handleChange}
                         required
-                        className="modern-input"
+                        className="w-full bg-[#121212] border border-gray-700 rounded-lg p-3 text-white focus:border-blue-500 outline-none transition-colors"
                         placeholder="Video Title"
                     />
                 </div>
 
-                <div className="form-section">
-                    <label style={{ display: 'block', marginBottom: '0.5rem' }}>Description</label>
+                <div className="flex flex-col gap-2">
+                    <label className="text-gray-300 font-medium">Description</label>
                     <textarea
                         name="description"
                         value={formData.description}
                         onChange={handleChange}
                         required
-                        className="modern-input"
+                        className="w-full bg-[#121212] border border-gray-700 rounded-lg p-3 text-white focus:border-blue-500 outline-none transition-colors min-h-[150px]"
                         rows="5"
                         placeholder="Tell viewers about your video"
-                        style={{ fontFamily: 'inherit' }}
                     />
                 </div>
 
-                <div className="form-row" style={{ display: 'flex', gap: '2rem' }}>
-                    <div className="form-section" style={{ flex: 1 }}>
-                        <label style={{ display: 'block', marginBottom: '0.5rem' }}>Video File</label>
-                        <div style={{ border: '2px dashed #444', padding: '2rem', borderRadius: '12px', textAlign: 'center', backgroundColor: '#181818' }}>
+                <div className="flex flex-col md:flex-row gap-6">
+                    <div className="flex-1">
+                        <label className="block text-gray-300 font-medium mb-2">Video File</label>
+                        <div className="border-2 border-dashed border-gray-700 hover:border-blue-500 transition-colors rounded-xl bg-[#181818] text-center">
                             <input
                                 type="file"
                                 name="video"
                                 onChange={handleChange}
                                 accept="video/*"
-                                style={{ display: 'none' }}
+                                className="hidden"
                                 id="video-upload"
                             />
-                            <label htmlFor="video-upload" style={{ cursor: 'pointer', display: 'block' }}>
-                                <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>📁</div>
-                                <div style={{ color: '#3ea6ff', fontWeight: '500' }}>Select Video</div>
-                                {formData.video && <div style={{ marginTop: '0.5rem', color: '#aaa' }}>{formData.video.name}</div>}
+                            <label htmlFor="video-upload" className="cursor-pointer block p-8">
+                                <div className="text-4xl mb-4">📁</div>
+                                <div className="text-blue-400 font-medium text-lg">Select Video</div>
+                                {formData.video ? (
+                                    <div className="mt-2 text-gray-400 text-sm truncate">{formData.video.name}</div>
+                                ) : (
+                                    <div className="mt-2 text-gray-500 text-sm">MP4, WebM, MKV</div>
+                                )}
                             </label>
                         </div>
                     </div>
 
-                    <div className="form-section" style={{ flex: 1 }}>
-                        <label style={{ display: 'block', marginBottom: '0.5rem' }}>Thumbnail</label>
-                        <div style={{ border: '2px dashed #444', padding: '2rem', borderRadius: '12px', textAlign: 'center', backgroundColor: '#181818' }}>
+                    <div className="flex-1">
+                        <label className="block text-gray-300 font-medium mb-2">Thumbnail</label>
+                        <div className="border-2 border-dashed border-gray-700 hover:border-blue-500 transition-colors rounded-xl bg-[#181818] text-center">
                             <input
                                 type="file"
                                 name="thumbnail"
                                 onChange={handleChange}
                                 accept="image/*"
-                                style={{ display: 'none' }}
+                                className="hidden"
                                 id="thumb-upload"
                             />
-                            <label htmlFor="thumb-upload" style={{ cursor: 'pointer', display: 'block' }}>
-                                <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>🖼️</div>
-                                <div style={{ color: '#3ea6ff', fontWeight: '500' }}>Select Thumbnail</div>
-                                {formData.thumbnail && <div style={{ marginTop: '0.5rem', color: '#aaa' }}>{formData.thumbnail.name}</div>}
+                            <label htmlFor="thumb-upload" className="cursor-pointer block p-8">
+                                <div className="text-4xl mb-4">🖼️</div>
+                                <div className="text-blue-400 font-medium text-lg">Select Thumbnail</div>
+                                {formData.thumbnail ? (
+                                    <div className="mt-2 text-gray-400 text-sm truncate">{formData.thumbnail.name}</div>
+                                ) : (
+                                    <div className="mt-2 text-gray-500 text-sm">JPG, PNG, WEBP</div>
+                                )}
                             </label>
                         </div>
                     </div>
@@ -135,43 +142,12 @@ function PublishVideo() {
 
                 <button
                     type="submit"
-                    className="modern-btn"
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-lg transition-colors mt-4 disabled:bg-gray-700 disabled:cursor-not-allowed"
                     disabled={loading}
-                    style={{ marginTop: '1rem', padding: '1rem' }}
                 >
                     {loading ? 'Uploading... This may take a while' : 'Publish Video'}
                 </button>
             </form>
-
-            <style>{`
-                .modern-input {
-                    width: 100%;
-                    padding: 12px;
-                    border-radius: 8px;
-                    background-color: #121212;
-                    border: 1px solid #444;
-                    color: white;
-                    font-size: 1rem;
-                    outline: none;
-                }
-                .modern-input:focus {
-                    border-color: #3ea6ff;
-                }
-                .modern-btn {
-                    width: 100%;
-                    background-color: #3ea6ff;
-                    color: black;
-                    border: none;
-                    border-radius: 4px;
-                    font-size: 1rem;
-                    font-weight: 600;
-                    cursor: pointer;
-                }
-                .modern-btn:disabled {
-                    background-color: #555;
-                    cursor: not-allowed;
-                }
-            `}</style>
         </div>
     );
 }

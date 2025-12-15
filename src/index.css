@@ -20,7 +20,7 @@
   --font-family: 'Roboto', 'Arial', sans-serif;
 
   --nav-height: 56px;
-  --sidebar-width: 240px;
+  --sidebar-width: 256px;
   --sidebar-width-collapsed: 72px;
 }
 
@@ -64,6 +64,7 @@ body {
   flex: 1;
   margin-top: var(--nav-height);
   height: calc(100vh - var(--nav-height));
+  position: relative;
 }
 
 .sidebar-wrapper {
@@ -75,8 +76,6 @@ body {
   bottom: 0;
   left: 0;
   z-index: 50;
-  /* transition: width 0.2s; */
-  /* Optional animation */
 }
 
 /* When we implement collapsible later */
@@ -90,6 +89,19 @@ body {
   padding: 24px;
   background-color: var(--bg-color);
   overflow-y: auto;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .content-wrapper {
+    margin-left: 0;
+    padding: 16px;
+  }
+  
+  .sidebar-wrapper {
+    /* We will hide sidebar via React component classes, but good to have safety here */
+    display: none; 
+  }
 }
 
 
